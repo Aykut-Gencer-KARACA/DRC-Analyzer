@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 560" width="1280" height="560" role="img" aria-labelledby="t d">
+<title id="t">Sistem mimarisi</title>
+<desc id="d">KiCad projesi, kicad-cli, JLCPCB servisleri ve Blender girdileri; kural motoru, proje güncelleyici, üretim, görseller ve hesaplayıcılar; şablon, güncel proje, üretim dosyaları, görseller ve hesap sonuçları</desc>
+<rect x="0.5" y="0.5" width="1279" height="559" rx="12" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="48" y="46" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="22" font-weight="600" fill="#1f2328">Sistem mimarisi</text>
+<text x="48" y="68" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="13" fill="#4f5963">Girdiler, uygulamanın bölümleri ve çıktılar</text>
+<rect x="960" y="35" width="10" height="10" rx="2" fill="#0550ae"/><text x="976" y="44" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="12.5" fill="#4f5963">Girdi</text>
+<rect x="1030" y="35" width="10" height="10" rx="2" fill="#953800"/><text x="1046" y="44" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="12.5" fill="#4f5963">Uygulama</text>
+<rect x="1125" y="35" width="10" height="10" rx="2" fill="#116329"/><text x="1141" y="44" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="12.5" fill="#4f5963">Çıktı</text>
+<line x1="48" y1="82" x2="1232" y2="82" stroke="#d0d7de"/>
+<text x="48" y="108" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="1.2" fill="#6e7781">GİRDİLER</text>
+<rect x="48" y="122" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="64" y="140" width="10" height="10" rx="2" fill="#0550ae"/>
+<text x="84" y="150" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">KiCad projesi</text>
+<text x="84" y="172" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">şema · PCB · proje ayarları</text>
+<rect x="48" y="206" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="64" y="224" width="10" height="10" rx="2" fill="#0550ae"/>
+<text x="84" y="234" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">kicad-cli</text>
+<text x="84" y="256" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">BOM · netlist · Gerber · drill · DRC</text>
+<rect x="48" y="290" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="64" y="308" width="10" height="10" rx="2" fill="#0550ae"/>
+<text x="84" y="318" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">JLCPCB servisleri</text>
+<text x="84" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">sınırlar · stackup · parça fiyatı ve stoğu</text>
+<rect x="48" y="374" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="64" y="392" width="10" height="10" rx="2" fill="#0550ae"/>
+<text x="84" y="402" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Blender (isteğe bağlı)</text>
+<text x="84" y="424" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">fotogerçekçi render</text>
+<text x="468" y="108" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="1.2" fill="#6e7781">UYGULAMA</text>
+<rect x="468" y="122" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="484" y="140" width="10" height="10" rx="2" fill="#953800"/>
+<text x="504" y="150" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Kural motoru</text>
+<text x="504" y="172" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">seçimler → KiCad kuralları ve şablon</text>
+<rect x="468" y="206" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="484" y="224" width="10" height="10" rx="2" fill="#953800"/>
+<text x="504" y="234" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Proje güncelleyici</text>
+<text x="504" y="256" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">yedek · uygula · öğe sayısı doğrulama</text>
+<rect x="468" y="290" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="484" y="308" width="10" height="10" rx="2" fill="#953800"/>
+<text x="504" y="318" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Üretim</text>
+<text x="504" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">BOM · CPL · Gerber · xlsx</text>
+<rect x="468" y="374" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="484" y="392" width="10" height="10" rx="2" fill="#953800"/>
+<text x="504" y="402" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Görseller</text>
+<text x="504" y="424" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">katman görselleri · render · turntable</text>
+<rect x="468" y="458" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="484" y="476" width="10" height="10" rx="2" fill="#953800"/>
+<text x="504" y="486" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">PCB hesaplayıcıları</text>
+<text x="504" y="508" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">19 planlı, 1. hazır</text>
+<text x="888" y="108" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" letter-spacing="1.2" fill="#6e7781">ÇIKTILAR</text>
+<rect x="888" y="122" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="904" y="140" width="10" height="10" rx="2" fill="#116329"/>
+<text x="924" y="150" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Proje şablonu</text>
+<text x="924" y="172" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">DRC_JLC_&lt;n&gt;L</text>
+<rect x="888" y="206" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="904" y="224" width="10" height="10" rx="2" fill="#116329"/>
+<text x="924" y="234" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Güncel proje</text>
+<text x="924" y="256" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">yedekli, kicad-cli ile doğrulanmış</text>
+<rect x="888" y="290" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="904" y="308" width="10" height="10" rx="2" fill="#116329"/>
+<text x="924" y="318" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">JLC_Production\</text>
+<text x="924" y="340" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">Gerber zip · BOM · CPL · IPC-D-356 · xlsx</text>
+<rect x="888" y="374" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="904" y="392" width="10" height="10" rx="2" fill="#116329"/>
+<text x="924" y="402" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Layer_Images\ · Renders\</text>
+<text x="924" y="424" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">PNG · PDF · GLB · render · turntable</text>
+<rect x="888" y="458" width="344" height="70" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+<rect x="904" y="476" width="10" height="10" rx="2" fill="#116329"/>
+<text x="924" y="486" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" fill="#1f2328">Hesap sonuçları</text>
+<text x="924" y="508" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace" font-size="12" fill="#6e7781">ölçekli şekil · adım adım formül</text>
+<path d="M400,300 H456" fill="none" stroke="#6e7781" stroke-width="2"/>
+<path d="M456,293 L468,300 L456,307 Z" fill="#6e7781"/>
+<path d="M820,300 H876" fill="none" stroke="#6e7781" stroke-width="2"/>
+<path d="M876,293 L888,300 L876,307 Z" fill="#6e7781"/>
+</svg>

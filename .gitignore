@@ -1,0 +1,19 @@
+# DRC Analyzer: uygulama verisi ve derleme ciktilari
+Exe/
+Data/
+MDs/
+*.lnk
+obj/
+Development/Test Results/
+
+# KiCad yerel ve gecici dosyalari
+*.kicad_prl
+*.lck
+*.bak
+*-backups/
+fp-info-cache
+_autosave-*
+
+# Isletim sistemi
+Thumbs.db
+.DS_Store
