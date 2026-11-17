@@ -1,4 +1,4 @@
-# DRC Analyzer: uygulama verisi ve derleme ciktilari
+# DRC Analyzer: app data and build output
 Exe/
 Data/
 MDs/
@@ -6,7 +6,7 @@ MDs/
 obj/
 Development/Test Results/
 
-# KiCad yerel ve gecici dosyalari
+# KiCad local and temporary files
 *.kicad_prl
 *.lck
 *.bak
@@ -14,6 +14,6 @@ Development/Test Results/
 fp-info-cache
 _autosave-*
 
-# Isletim sistemi
+# Operating system
 Thumbs.db
 .DS_Store

@@ -6,17 +6,17 @@
 
 <a href="#-sistem-mimarisi"><img src="https://img.shields.io/badge/KiCad-10-314CB0?style=for-the-badge&logo=kicad&logoColor=white" alt="KiCad 10"/></a>
 <a href="#-üretim-dosyaları"><img src="https://img.shields.io/badge/Üretim-JLCPCB-6639BA?style=for-the-badge" alt="JLCPCB"/></a>
-<a href="#-kaynaktan-derleme"><img src="https://img.shields.io/badge/C%23-.NET_Framework_4-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt="C# .NET Framework 4"/></a>
+<a href="#-kaynak-kod"><img src="https://img.shields.io/badge/C%23-.NET_Framework_4-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt="C# .NET Framework 4"/></a>
 
-<img src="https://img.shields.io/badge/Sürüm-v1.0-953800?style=flat-square" alt="v1.0"/>
+<img src="https://img.shields.io/badge/Sürüm-v1.1-953800?style=flat-square" alt="v1.1"/>
 <img src="https://img.shields.io/badge/Platform-Windows_10%2F11-0550AE?style=flat-square" alt="Windows"/>
 <img src="https://img.shields.io/badge/Dil-Türkçe_%2F_English-116329?style=flat-square" alt="Türkçe / English"/>
-<img src="https://img.shields.io/badge/Otomatik_test-217_birim_%2B_arayüz-8B1A1A?style=flat-square" alt="217 birim testi ve arayüz testleri"/>
+<img src="https://img.shields.io/badge/Otomatik_test-247_birim_%2B_arayüz-8B1A1A?style=flat-square" alt="247 birim testi ve arayüz testleri"/>
 
 <br/><br/>
 
 **KiCad projelerini JLCPCB'nin üretim sınırlarına göre kuran, üretim dosyalarını ve görselleri tek yerden çıkaran Windows aracı.**<br/>
-Kurallar, stackup, Gerber, BOM, CPL, katman görselleri, fotogerçekçi render ve PCB hesaplayıcıları tek bir taşınabilir exe'de.
+Kurallar, stackup, Gerber, BOM, CPL, katman görselleri, fotogerçekçi render tek bir taşınabilir exe'de.
 
 </div>
 
@@ -31,9 +31,8 @@ Kurallar, stackup, Gerber, BOM, CPL, katman görselleri, fotogerçekçi render v
 - [Kullanım](#-kullanım)
 - [Üretim dosyaları](#-üretim-dosyaları)
 - [Görseller ve render](#-görseller-ve-render)
-- [PCB hesaplayıcıları](#-pcb-hesaplayıcıları)
 - [Doğrulama ve testler](#-doğrulama-ve-testler)
-- [Kaynaktan derleme](#-kaynaktan-derleme)
+- [Kaynak kod](#-kaynak-kod)
 - [Sınırlamalar](#-sınırlamalar)
 - [Depo yapısı](#-depo-yapısı)
 
@@ -43,14 +42,13 @@ KiCad'de yeni bir kart tasarlarken üreticinin sınırlarını (en ince iz, en k
 
 | Özellik | Değer |
 |---|---|
-| **Üretici** | JLCPCB (yeni üretici eklemek için tek bir sınıf yazılır) |
-| **Katman** | 2 – 32 · JLC'nin sipariş sayfasındaki 957 stackup uygulamaya gömülü |
+| **Üretici** | JLCPCB ve PCBWay (yeni üretici eklemek için tek bir sınıf yazılır). Üretim dosyaları seçilen üreticiye göre üretilir: JLCPCB için BOM / CPL / LCSC kodları, PCBWay için PCBWay'in kendi KiCad rehberindeki Gerber ayarları ve üretici parça numaralı BOM |
+| **Katman** | JLCPCB: 2 – 32 · JLC'nin sipariş sayfasındaki 957 stackup uygulamaya gömülü. PCBWay: 2 ve 4 – 16 · PCBWay'in 211 stackup'ı gömülü, dış bakır 1 – 3 oz, iç bakır 0.5 – 3 oz (sınırı yayınlanmış ağırlıklar) |
 | **Seçimler** | Kalınlık, dış / iç bakır, stackup, maske rengi, yüzey kaplama, kart kenarı (V-cut / freze), güvenlik payı (0 – 0.15 mm) |
 | **KiCad çıktısı** | Proje şablonu `DRC_JLC_<n>L`: kurallar, net class, iz / via ön ayarları, stackup, `.kicad_dru` özel kuralları |
 | **Üretim çıktısı** | Gerber + drill zip, BOM, CPL, IPC-D-356 netlist, `Production.xlsx` (özet, BOM ve parça bilgileri, CPL) |
-| **Parça kodları** | Şemadaki `LCSC Part` alanından okunur; eksikler uygulamada girilebilir ya da dosyadan alınabilir |
+| **Parça kodları** | Her parçanın kodu KiCad'de sembolün özelliğine yazılır (`LCSC Part` ya da `DigiKey`); uygulama kodları şemadan okur, istenirse boş alanları tüm sembollere ekler. Kodu olmayan parça (test noktası gibi) hata sayılmaz |
 | **Görseller** | Katman başına PNG, şematik PDF, 3B model (GLB), Blender ile render: hero, önden, üstten, alttan, arkadan, soldan, sağdan ve 360° turntable |
-| **Hesaplayıcılar** | 19 PCB hesaplayıcısı planlı; 1. hazır (bant genişliği ve maks. iletken uzunluğu) |
 | **Arayüz** | Türkçe / English, açık / koyu tema, ayarlar sekmesi |
 | **Gereksinim** | Windows 10 / 11 · KiCad 10 · kurulum yok, tek exe |
 
@@ -81,7 +79,7 @@ Alt yüz dönüşü, KiCad kütüphane footprint'leri için JLC dönüş düzelt
 <td valign="top">
 
 **Kodlar şemada yaşar**<br/>
-Parçayı yerleştirirken `E` ile açılan pencereye LCSC kodunu yazmanız yeterli. Uygulama projeyi seçince kodları şemadan okur; eksik kodları, JLC parça bilgisini ve stok sorunlarını gösterir.
+Parçayı yerleştirirken `E` ile açılan pencereye parçanın kodunu yazmanız yeterli (`LCSC Part` ya da `DigiKey`). Uygulama projeyi seçince kodları şemadan okur ve her satırın kodunu `C242355-LCSC` gibi gösterir.
 
 </td>
 </tr>
@@ -93,9 +91,6 @@ Blender ile kartı bir ceviz masa üzerinde, aydınlatılmış bir sahnede rende
 
 </td>
 <td valign="top">
-
-**Formülü gösteren hesaplayıcılar**<br/>
-Her hesaplayıcının bir "Nasıl çalışır?" sayfası var: fiziksel açıklama, ölçekli şekiller, adım adım formül ve örnek. Değerler seçilen JLC stackup'ından gelir.
 
 </td>
 </tr>
@@ -110,14 +105,14 @@ Her hesaplayıcının bir "Nasıl çalışır?" sayfası var: fiziksel açıklam
 Uygulama dört kaynaktan beslenir:
 - **KiCad projesi:** şema, PCB ve proje ayarları.
 - **`kicad-cli`:** KiCad'in komut satırı aracı. BOM, netlist, Gerber, drill, DRC, şematik PDF ve GLB için kullanılır.
-- **JLCPCB'nin herkese açık sayfaları ve servisleri:** üretim sınırları, stackup listesi, parça bilgisi, fiyat ve stok.
+- **JLCPCB'nin herkese açık sayfaları:** üretim sınırları ve stackup listesi.
 - **Blender (isteğe bağlı):** render ve turntable için.
 
-Kural motoru seçimleri KiCad kurallarına çevirir. Kurallar ya ayrı bir klasördeki şablona ya da mevcut projeye yazılır. Üretim bölümü dosyaları projenin içindeki `JLC_Production`, görseller `Layer_Images` ve `Renders` klasörlerine koyar; proje dosyalarının kendisine yalnızca "Mevcut projeye uygula" yazar (yedekli).
+Kural motoru seçimleri KiCad kurallarına çevirir. Kurallar ya ayrı bir klasördeki şablona ya da mevcut projeye yazılır. Üretim bölümü dosyaları projenin içindeki `JLC_Production` (PCBWay seçiliyse `PCBWay_Production`), görseller `Layer_Images` ve `Renders` klasörlerine koyar; proje dosyalarının kendisine yalnızca "Mevcut projeye uygula" yazar (yedekli).
 
 ## ◆ Kurulum
 
-Hazır exe [Releases](https://github.com/Aykut-Gencer-KARACA/DRC-Analyzer/releases/latest) sayfasındadır; isterseniz [kaynaktan derleyebilirsiniz](#-kaynaktan-derleme) (tek komut).
+Hazır exe [Releases](https://github.com/Aykut-Gencer-KARACA/DRC-Analyzer/releases/latest) sayfasındadır; kaynak kod için [Kaynak kod](#-kaynak-kod) bölümüne bakın.
 
 1. `DRC Analyzer.exe` dosyasını kendi klasörüne koyun, örneğin `C:\Projects\DRC\DRC Analyzer.exe`. Uygulama verilerini (`Data\`) exe'nin yanına yazar. Exe'nin klasörünün adı `Exe` ise `Data\` bir üst klasörde oluşturulur.
 2. Çalıştırın. KiCad'in yeri otomatik bulunur; bulunamazsa sorulur.
@@ -126,11 +121,11 @@ Hazır exe [Releases](https://github.com/Aykut-Gencer-KARACA/DRC-Analyzer/releas
 > Exe'yi **Masaüstü** ya da **Belgeler** içine koymayın. Windows'un "Denetimli klasör erişimi" özelliği oraya yazmayı engelleyebilir.
 
 > [!NOTE]
-> İnternet yalnızca JLC parça bilgisi (üretici, stok, fiyat) ve ilk render'da sahne varlıkları (≈ 35 MB, Poly Haven, CC0) için gerekir. Bağlantı yoksa üretim dosyaları yine oluşur; xlsx'teki fiyat ve stok sütunları boş kalır.
+> İnternet yalnızca ilk render'da sahne varlıkları (≈ 35 MB, Poly Haven, CC0) için gerekir. Üretim dosyaları internetsiz de oluşur: JLC için dönüş kontrolünde yalnızca LCSC kodları gönderilip parçanın footprint'i alınır, 90 gün saklanır ve Ayarlar'dan kapatılabilir. Uygulama parça bilgisi, stok ya da fiyat sorgulamaz.
 
 ## ◆ Kullanım
 
-Pencerede altı sekme vardır: **Uygulanacak kurallar · Stackup · Proje ve üretim · Görseller · PCB hesaplayıcıları · Ayarlar**. Kısayollar: `F1` yardım, `F5` projeyi yeniden oku, `Ctrl+O` proje aç, `Ctrl+B` üretim, `Ctrl+R` render, `Ctrl+L` katman görselleri, `Ctrl+F` kurallarda ara, `Ctrl+1 … 5` sekmeler.
+Pencerede beş sekme vardır: **Uygulanacak kurallar · Stackup · Proje ve üretim · Görseller · Ayarlar**. Kısayollar: `F1` yardım, `F5` projeyi yeniden oku, `Ctrl+O` proje aç, `Ctrl+B` üretim, `Ctrl+R` render, `Ctrl+L` katman görselleri, `Ctrl+F` kurallarda ara, `Ctrl+1 … 5` sekmeler.
 
 <details open>
 <summary><b>1 · Kuralları seçin ve KiCad şablonu oluşturun</b></summary>
@@ -172,10 +167,10 @@ Seçilen JLC stackup'ının katmanları, kalınlıkları, Dk değerleri ve malze
 "Proje ve üretim" sekmesinde projeyi seçin (ya da pencereye bir proje / klasör / kart dosyası bırakın):
 - soldaki ayarlar projeden okunur;
 - BOM şemadan gelir ve değer + footprint + kod ile gruplanır;
-- LCSC kodları şemadaki `LCSC Part` alanından okunur (mavi satırlar); eksikler yazılabilir ya da dosyadan alınabilir;
-- özet kartları parça sayısını, kodları ve JLC stoğunu gösterir (stoğu yetmeyen parçaların adı kartta yazar).
+- parça kodları KiCad'de sembolün özelliklerinden okunur (parçayı seç, `E`): `LCSC Part` ve `DigiKey`. Listede "Parça kodu" sütunu `C242355-LCSC` ya da `296-1234-ND-DigiKey` gibi gösterir; parça kodu (LCSC ya da DigiKey) olan her satır BOM'a ve CPL'ye girer; BOM her üretici için aynıdır ve her satırın kodu kendi tedarikçisinin sütunundadır (`LCSC Part #`, `DigiKey Part #`). Kodu olmayan satır hata değildir: başka yerden alınan parça ya da test noktasıdır. **Kod alanlarını ekle…** düğmesi her parçaya bu iki boş özelliği koyar (şematiğin yedeği önce alınır);
+- BOM satırı en çok 200 designator içerir (JLC'nin sınırı; fazlası birkaç satıra bölünür), her designator yalnızca bir kez geçer; CPL milimetre cinsindendir, katman `top` / `bottom`.
 
-Elle dizilecek parçaların **Dizilsin** işaretini kaldırın, kart adedini girin ve **Üretim dosyalarını oluştur** düğmesine basın.
+**Üretim dosyalarını oluştur** düğmesine basın. JLC için CPL dönüşleri, parçanın kendi LCSC footprint'i (EasyEDA) ile karşılaştırılarak yazılır; bunun için yalnızca LCSC kodları gönderilir, footprint'ler 90 gün saklanır (Ayarlar › Üretim'den kapatılabilir). Dönüşü doğrulanamayan bir parça JLC önizlemesinde dönük görünürse KiCad'de sembolüne `Rotation Offset` özelliğini (derece, örn. 90) ekleyip yeniden oluşturun. PCBWay için KiCad'in kendi dönüşü yazılır. Elle takacağınız ya da başka yerden alacağınız parçalara o üreticinin kodunu yazmayın; dosyalara girmezler.
 
 </details>
 
@@ -183,23 +178,23 @@ Elle dizilecek parçaların **Dizilsin** işaretini kaldırın, kart adedini gir
 <summary><b>5 · Ayarlar</b></summary>
 <br/>
 
-Dil (EN / TR), tema (açık / koyu / Windows'a göre), hesaplayıcı birimleri (metrik / inç), render kalitesi ve görünümleri, "her render'dan önce sor", yalnızca işlemci, Blender yolu ve varsayılan kart adedi. Üstteki dişli simgesi bu sekmeyi açar. Uzun işler (üretim, render) biterken görev çubuğunda ilerleme gösterilir ve bildirim verilir.
+Dil (EN / TR), tema (açık / koyu / Windows'a göre), render kalitesi ve görünümleri, "her render'dan önce sor", yalnızca işlemci, Blender yolu. Üstteki dişli simgesi bu sekmeyi açar. Uzun işler (üretim, render) biterken görev çubuğunda ilerleme gösterilir ve bildirim verilir.
 
 </details>
 
 ## ◆ Üretim dosyaları
 
-Dosyalar `<proje>\JLC_Production\` klasörüne yazılır. Revizyon, PCB başlık bloğundan, yoksa şematiğin başlık bloğundan, yoksa klasör adından (`RevC`) alınır.
+Dosyalar `<proje>\JLC_Production\` klasörüne yazılır (soldaki üretici PCBWay ise `<proje>\PCBWay_Production\`: Gerber PCBWay rehberindeki ayarlarla (KiCad uzantıları, X2 yok, PTH + NPTH tek drill dosyası) ve `_CPL_PCBWay.csv` KiCad'in kendi konum dosyası biçiminde; BOM, netlist ve xlsx aynıdır). Revizyon, PCB başlık bloğundan, yoksa şematiğin başlık bloğundan, yoksa klasör adından (`RevC`) alınır.
 
 | Dosya | İçerik |
 |---|---|
 | `<ad>_Rev<x>_Gerber.zip` | Gerber (zone'lar yeniden doldurulmuş, X2) + Excellon drill (mm), PTH / NPTH ayrı, drill haritası |
-| `<ad>_Rev<x>_BOM_JLC.csv` | BOM, LCSC kodlarıyla (Fabrication Toolkit eklentisiyle aynı sütunlar) |
+| `<ad>_Rev<x>_BOM.csv` | BOM, her üretici için aynı: designator, footprint, adet, değer, `LCSC Part #`, `DigiKey Part #`, üretici, üretici parça no (Fabrication Toolkit eklentisiyle aynı ilk sütunlar) |
 | `<ad>_Rev<x>_CPL_JLC.csv` | Yerleşim dosyası · yalnızca dizilecek parçalar |
 | `<ad>_Rev<x>_Netlist.ipc` | IPC-D-356 netlist: JLC, Gerber'i bağlantılarla karşılaştırabilir |
-| `<ad>_Rev<x>_Production.xlsx` | Sipariş özeti, parça bilgisi ve stok, BOM, CPL (seçili dilde) |
+| `<ad>_Rev<x>_Production.xlsx` | Yatay özet sayfası (rakam kutuları: parça çeşidi, komponent, üst / alt yüz, katman, kalınlık, bakır, en küçük iz ve delik; proje ve sipariş formu yan yana; parça dağılımı ve grafiği; onay satırı), BOM ve CPL sayfaları, seçili dilde; dışarıdan veri yok |
 
-BOM ve CPL sütunları, JLCPCB'nin KiCad rehberinde önerdiği [Fabrication Toolkit](https://github.com/bennymeg/Fabrication-Toolkit) eklentisiyle aynıdır.
+BOM ve CPL sütunları, JLCPCB'nin KiCad rehberinde önerdiği [Fabrication Toolkit](https://github.com/bennymeg/Fabrication-Toolkit) eklentisinin çıktısıyla aynıdır ve JLCPCB'nin yayımladığı kurallara uyar (CPL: `Designator, Mid X, Mid Y, Rotation, Layer`). JLC alt yüzdeki parçaların dönüş kuralını yayımlamaz; bu yüzden ilk siparişte yerleşim önizlemesine bakılması önerilir.
 
 <details>
 <summary><b>CPL dönüşleri</b></summary>
@@ -216,7 +211,7 @@ Düzeltilen her parça, üretimden sonra bir not olarak gösterilir. Siparişten
 </details>
 
 > [!NOTE]
-> Uygulama parça fiyatını ve stoğu gösterir; bir **maliyet tahmini ya da montaj ücreti hesabı yapmaz**. Son fiyatı JLC'nin teklifi belirler.
+> Uygulama **fiyat, stok ya da maliyet göstermez**; son fiyatı üreticinin teklifi belirler.
 
 ## ◆ Görseller ve render
 
@@ -250,43 +245,22 @@ Render penceresindeki görünümler (hero ve önden varsayılandır, diğerleri 
 | `top` | tam yukarıdan, kartın dış çizgisi kareyi doldurur | masa ve disk, aksesuarsız |
 | `bottom` | tam aşağıdan; kart havada tutulur, alt yüz alttan aydınlatılır | düz gri fon, aksesuarsız |
 
-Render, **Blender 4.2 veya üstü** gerektirir (otomatik bulunur ya da bir kez seçilir). Sahne: ince bir taş sunum diski üzerinde kart, ceviz masa, kağıtlar, kalem, bitki ve kupa; sıcak yumuşak ana ışık. Kartın boyutuna, maske rengine ve yüzey kaplamasına göre ölçeklenir. Kalite: hızlı önizleme (≈ 2 dk), yüksek (≈ 12 dk), maksimum (≈ 80 dk); süreler RTX 4050 dizüstü GPU'da ölçülmüştür. Render durdurulabilir; biten fotoğraflar kalır. 3B modeli olmayan parçalar ve doldurulmamış zone'lar not olarak bildirilir.
-
-## ◆ PCB hesaplayıcıları
-
-Saturn PCB Toolkit'in 19 sekmesinin geliştirilmiş karşılıkları, yayımlanmış formüllerle (IPC standartları, el kitapları) yazılıyor. Değerler seçili JLC stackup'ından gelir; her hesaplayıcının bir **"Nasıl çalışır?"** sayfası var. [Saturn PCB Toolkit](https://www.saturnpcb.com) yalnızca kara kutu referans olarak kullanılır: aynı girdiler ikisine de verilir, sonuçlar karşılaştırılır; uygulamanın parçası değildir.
-
-<table>
-<tr>
-<td width="50%"><img src="assets/calculator.png" alt="Bant genişliği hesaplayıcısı"/></td>
-<td width="50%"><img src="assets/calculator-guide.png" alt="Nasıl çalışır sayfası"/></td>
-</tr>
-<tr>
-<td align="center"><sub>1 · Bant genişliği ve maks. iletken uzunluğu</sub></td>
-<td align="center"><sub>"Nasıl çalışır?": kısa ve uzun izde yansıma</sub></td>
-</tr>
-</table>
-
-| # | Hesaplayıcı | Durum |
-|:-:|---|---|
-| 1 | Bant genişliği ve maks. iletken uzunluğu | ✅ Hazır · Saturn ile 265 / 265 değer karşılaştırıldı |
-| 2 – 19 | İletken empedansı, iletken özellikleri, birim dönüştürücü, diferansiyel çift / karışma, gömülü dirençler, efektif Er, sigorta akımı, mekanik bilgiler, iletken aralığı, Ohm kanunu, padstack, PDN, düzlemsel bobinler, PPM / kristal, ısıl yönetim, via özellikleri, dalga boyu, XL / XC | Sırada |
+Render, **Blender 4.2 veya üstü** gerektirir (otomatik bulunur ya da bir kez seçilir). Sahne: ince bir taş sunum diski üzerinde kart, ceviz masa, kağıtlar, kalem, bitki ve kupa; sıcak yumuşak ana ışık. Kartın boyutuna, maske rengine ve yüzey kaplamasına göre ölçeklenir. Kalite: hızlı önizleme (≈ 2 dk), yüksek (≈ 12 dk), maksimum (≈ 80 dk); süreler yaklaşıktır ve bilgisayara bağlıdır. Render durdurulabilir; biten fotoğraflar kalır. 3B modeli olmayan parçalar ve doldurulmamış zone'lar not olarak bildirilir.
 
 ## ◆ Doğrulama ve testler
 
-Test betikleri `Development/Tests` içindedir ve exe'yi yansıma (reflection) ile yükler; proje üzerinde çalışan testler projenin **kopyası** ile çalıştırılır, pencere ekran dışında açılır.
+Test betikleri kaynak kodla birlikte (`Development/Tests`, özel depoda) durur ve exe'yi yansıma (reflection) ile yükler; proje üzerinde çalışan testler projenin **kopyası** ile çalıştırılır, pencere ekran dışında açılır.
 
 | Test | Ne yapar | Sonuç |
 |---|---|---|
-| `unit-tests.ps1` | Saf fonksiyonlar: dosya adları, fiyatlar, CSV, CPL dönüşleri, CPL / BOM eşleşmesi, kutuplu kondansatörler, pad merkezleri, şema kodları, revizyon, S-expression, `.kicad_dru`, JSON, hesaplayıcı matematiği | 217 / 217 |
-| `gui-tests.ps1` | Gerçek pencereyi ekran dışında sürer: dil değişimi, üretim, projeye uygulama, uygula + doğrula, varsayılana dönüş, hesaplayıcılar, çalışırken kapatma | 51 / 51 |
-| `ui-tests.ps1` | Son kullanılanlar, sürükle-bırak, kısayollar, hakkında, özet kartları, Görseller sekmesi, ilk açılış turu, kural arama, koyu tema (her sekmede kontrast denetimi), ayarlar | 79 / 79 |
+| `unit-tests.ps1` | Saf fonksiyonlar: dosya adları, CSV, CPL dönüşleri, CPL / BOM eşleşmesi, kutuplu kondansatörler, pad merkezleri, şema kodları, revizyon, S-expression, `.kicad_dru`, JSON, PCBWay kural değerleri | 247 / 247 |
+| `gui-tests.ps1` | Gerçek pencereyi ekran dışında sürer: dil değişimi, üretim, projeye uygulama, uygula + doğrula, varsayılana dönüş, PCBWay seçimi (kurallar, uygula + doğrula), sekmelere göre alt çubuk ve sol panel, çalışırken kapatma, xlsx'in açılabilirliği | 52 / 52 |
+| `ui-tests.ps1` | Son kullanılanlar, sürükle-bırak, kısayollar, hakkında, Görseller sekmesi, ilk açılış turu, kural arama, koyu tema (her sekmede kontrast denetimi), ayarlar | 71 / 71 |
 | `layer-images-tests.ps1` | Katman görselleri: komut satırı, eski görsellerin silinmesi, düğme, proje dosyalarının değişmemesi | 13 / 13 |
 | `render-tests.ps1` | Render (küçük boyutlarla): komut satırı ve seçenekler, ek görünümler, düğme, yarıda durdurma, proje dosyalarının değişmemesi | 40 / 40 |
-| `run-tests.ps1` | 26 senaryoda (2 – 32 katman, bakır, kenar, maske…) KiCad doğrulaması | 26 / 26 |
-| `saturn-compare-bandwidth.ps1` | 1. hesaplayıcı ile Saturn PCB Toolkit'in yan yana karşılaştırması | 265 / 265 |
+| `run-tests.ps1` | JLCPCB için 26, PCBWay için 22 senaryoda (katman sayıları, bakır, pay, kenar, maske, kaplama…) KiCad doğrulaması | 26 / 26 ve 22 / 22 |
 
-Son koşu 2026-10-11'dir (birim, arayüz, gui ve render testleri); katman görselleri testleri, KiCad doğrulama senaryoları (`run-tests`) ve Saturn karşılaştırması bu tarihte yeniden koşulmadı, ilgili kodları değişmedi.
+Son koşu v1.1 için 2026-11-18'dir: tüm paketler (birim, gui, arayüz, katman görselleri, render ve iki üreticinin KiCad doğrulaması) proje kopyaları üzerinde geçti.
 
 <details>
 <summary><b>Komut satırı</b></summary>
@@ -297,54 +271,38 @@ Son koşu 2026-10-11'dir (birim, arayüz, gui ve render testleri); katman görse
 "DRC Analyzer.exe" --lang en --layers 6 --verify                    kuralları KiCad ile doğrula
 "DRC Analyzer.exe" --layers 6 --project X.kicad_pro --analyze       projeyi incele
 "DRC Analyzer.exe" --layers 6 --project X.kicad_pro --update        kuralları projeye uygula (yedekli)
-"DRC Analyzer.exe" --layers 6 --project X.kicad_pro --bom --build --boards 10
+"DRC Analyzer.exe" --layers 6 --project X.kicad_pro --bom --build
                                                                     BOM'u listele, üretim dosyalarını oluştur
 "DRC Analyzer.exe" --project X.kicad_pro --layer-images             katman görselleri, şematik PDF, GLB
 "DRC Analyzer.exe" --project X.kicad_pro --render --quality preview Blender ile render
 "DRC Analyzer.exe" --project X.kicad_pro --render --views top,bottom,left   yalnızca seçilen görünümler
 ```
 
-Exe bir pencere uygulaması olduğu için PowerShell'de çıktıyı beklemek üzere sonuna `| Out-String` ekleyin. `DRC_ANALYZER_OFFLINE=1` ortam değişkeni JLC bağlantısını kapatır.
+Exe bir pencere uygulaması olduğu için PowerShell'de çıktıyı beklemek üzere sonuna `| Out-String` ekleyin.
 
 </details>
 
-## ◆ Kaynaktan derleme
+## ◆ Kaynak kod
 
-Ek bir SDK gerekmez; Windows'taki .NET Framework 4 derleyicisi (`csc.exe`) kullanılır.
+Kaynak kod (`Development/`) bu deponun özel kopyasında tutulur; herkese açık depo hazır exe'yi, belgeleri ve görselleri içerir. Teknik özet:
 
-```powershell
-git clone https://github.com/Aykut-Gencer-KARACA/DRC-Analyzer.git
-cd DRC-Analyzer
-powershell -ExecutionPolicy Bypass -File "Development\build.ps1" -Output "Exe\DRC Analyzer.exe"
-powershell -ExecutionPolicy Bypass -File "Development\Tests\unit-tests.ps1" -Exe "Exe\DRC Analyzer.exe"
-```
-
-- Kod C# 5, WinForms. `build.ps1`, `Development` altındaki tüm `.cs` dosyalarını derler; `Reference Data\stackups.json` ve Visuals betikleri exe'ye gömülür.
-- Tüm kullanıcı metinleri `Localization\Tx.*.cs` içinde, Türkçe ve İngilizce.
-- Yeni bir üretici eklemek için `IManufacturer` arayüzünü uygulayan tek bir sınıf yazmak yeterli (örnek: `Manufacturers\Jlc.cs`).
-- Ayrıntılı geliştirici notu: [`Development/README.txt`](Development/README.txt).
+- Kod C# 5, WinForms; Windows'taki .NET Framework 4 derleyicisiyle (`csc.exe`) derlenir, ek SDK gerekmez. Stackup listeleri ve Blender / KiCad betikleri exe'ye gömülür.
+- Tüm kullanıcı metinleri tek yerde, Türkçe ve İngilizce.
+- Yeni bir üretici eklemek için ortak taban sınıftan türeyen tek bir sınıf yazmak yeterlidir.
+- Komut satırı seçeneklerinin tam listesi için `DRC Analyzer.exe --help`.
 
 ## ◆ Sınırlamalar
 
 - **KiCad 10** ile geliştirildi ve test edildi (10.0.6); diğer sürümler denenmedi.
-- Yalnızca Windows ve yalnızca JLCPCB; başka üreticiler (ve Altium) planlanıyor.
-- JLCPCB'nin parça ve stackup servisleri resmî bir API değildir; değişirlerse ilgili sütunlar boş kalır, uygulama çalışmaya devam eder.
-- Maliyet hesaplanmaz: yalnızca parça fiyatı ve stoğu gösterilir.
-- 19 hesaplayıcıdan yalnızca 1'i hazır.
+- Yalnızca Windows; kurallar JLCPCB ve PCBWay için var, başka üreticiler (ve Altium) planlanıyor. PCBWay kuralları üreticinin kabiliyet sayfasındaki "normal proses" değerleridir; sayfada olmayan değerler için kural yazılmaz; her kuralın kaynağı uygulamadaki kural tablosunda görünür.
+- JLC dönüş kontrolünde kullanılan LCSC (EasyEDA) footprint servisi resmî bir API değildir; ulaşılamazsa o parçalar "doğrulanamadı" diye listelenir ve kendi dönüşleriyle kalır, uygulama çalışmaya devam eder. Dönüşü yanlış çıkan parça için sembole `Rotation Offset` yazılabilir.
+- Fiyat, stok ve maliyet hesaplanmaz.
 - Tray bildirimi ve render'ın görünümü otomatik testle denetlenmez; render çıktıları elle gözden geçirilir.
 
 ## ◆ Depo yapısı
 
 ```text
 DRC-Analyzer/
-├─ Development/
-│  ├─ App/ Common/ Localization/ Manufacturers/ KiCad/ Production/ Visuals/ Calculations/ GUI/
-│  │                       C# kaynak kodu (her klasör bir bölüm)
-│  ├─ Reference Data/      stackups.json (JLC stackup'ları, exe'ye gömülür), SOURCES.txt
-│  ├─ Tests/               birim, arayüz, gui, katman görseli, render ve doğrulama testleri
-│  ├─ Tools/               yardımcı araçlar (stackup güncelleme, ekran görüntüsü, Saturn sürücüsü)
-│  ├─ build.ps1            derleme betiği
-│  └─ README.txt           geliştirici notu
 ├─ assets/                 README görselleri
 └─ README.md
 ```
@@ -357,7 +315,6 @@ Derlenmiş `DRC Analyzer.exe` depo dosyalarında değildir, [Releases](https://g
 
 - **Fabrication Toolkit** ([bennymeg/Fabrication-Toolkit](https://github.com/bennymeg/Fabrication-Toolkit), Apache-2.0): KiCad footprint'leri için JLC dönüş tablosu ve BOM / CPL sütun düzeni.
 - **Poly Haven** ([polyhaven.com](https://polyhaven.com), CC0): render sahnesinin ceviz dokusu, bitkisi, kağıtları, kalemi ve oda ışığı; ilk render'da indirilir, depoda yoktur.
-- **Saturn PCB Toolkit** ([saturnpcb.com](https://www.saturnpcb.com)): yalnızca hesaplayıcıların sonuçlarını karşılaştırmak için kullanıldı; uygulamanın ya da bu deponun parçası değildir.
 
 </details>
 
